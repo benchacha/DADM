@@ -1,4 +1,18 @@
 # DADM
 Density-Aware Diffusion Model for Efficient Image Dehazing
 
-![Overview of our DADM](C:\Users\密码是toor\Desktop\第一篇论文\fig2.png)
+
+
+### Our Result.
+
+![Our Result](./figs/representative.jpg)
+
+### Overview of our DADM. 
+
+![Overview of our DADM](./figs/methods/fig2.png)
+
+
+
+### Sampling process for testing.
+
+![Sampling process for testing.](./figs/methods/fig5.png)
