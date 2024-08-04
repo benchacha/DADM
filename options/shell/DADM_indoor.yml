@@ -1,0 +1,50 @@
+phase: test
+gpu_ids: [0]
+
+# model: SDEGSAC
+model: SDE
+seed:
+
+sde:
+  max_sigma: 50
+  T: 100
+  schedule: cosine
+  eps: 0.005
+
+
+degradation: # for some synthetic dataset that only have GTs
+  # for denoising
+  sigma: 25
+  noise_type: G # Gaussian noise: G
+  # for super-resolution
+  scale: 4
+
+
+net_G:
+  name: DGHRNet
+  # name: HRSDENet_1
+  in_nc: 3
+  out_nc: 3
+  embed_dims: [24, 48, 96, 48, 24]
+  depths: [2, 2, 24, 2, 2]
+  upsacle: 1.0
+
+datasets:
+  name: indoor_
+  valid:
+    type: indoor
+    mode: ValidDataset
+    dataroot_GT: /mnt/data/baiwenxu/CGDNet/data/SOTS/indoor/clear
+    dataroot_hazy: /mnt/data/baiwenxu/CGDNet/data/SOTS/indoor/hazy
+    use_shuffle: false
+    n_workers: 8
+    batch_size: 1
+    patch_size: whole_img
+
+
+path:
+  checkpoint: /mnt/data/baiwenxu/CGDNet/ckpts/SDE/DGHRNet_0107_backup/indoor/indoor_modify.pth
+  strict_load: true
+  resume_state: ~
+  ckpts: state
+  save_path: ./shell_results

@@ -1,0 +1,95 @@
+phase: train
+gpu_ids: [1]
+
+
+seed: 
+model: DADM
+
+sde:
+  max_sigma: 50
+  T: 100
+  schedule: cosine
+  eps: 0.005
+
+net_G:
+  name: DADNet
+  in_nc: 3
+  out_nc: 3
+  embed_dims: [24, 48, 96, 48, 24]
+  depths: [2, 2, 24, 2, 2]
+  upsacle: 1.0
+
+train_params:
+  optimizer: Lion
+  lr: !!float 3e-5
+  eta_min: !!float 2e-6 
+  lr_scheme: TrueCosineAnnealingLR
+  betas: [0.9, 0.99]
+  use_grad_clip: False
+  eps: !!float 1e-8
+  lr_steps: [200000, 400000, 600000]
+  lr_gamma: 0.5
+  niter: 500000
+  epochs: 30
+  print_freq: 200
+  eval_freq: 100
+  plot: true
+
+path:
+  checkpoint: ~
+  strict_load: true
+  resume_state: ~
+  ckpts: ~
+  save_path: ./ckpts
+    
+
+datasets:
+  name: nh2
+  train:
+    mode: TrainDataset
+    type: NH-Haze2
+    dataroot_GT: ./data/NH_HAZE2/train/GT
+    dataroot_hazy: ./data/NH_HAZE2/train/hazy
+
+    use_shuffle: true
+    n_workers: 4
+    batch_size: 4
+    patch_size: [256, 256]
+    use_flip: true
+    use_rot: true
+    color: RGB
+
+  valid:
+    mode: ValidDataset
+    type: NH-Haze2
+    dataroot_GT: ./data/NH_HAZE2/test/GT
+    dataroot_hazy: ./data/NH_HAZE2/test/hazy
+    use_shuffle: false
+    n_workers: 4
+    batch_size: 1
+    patch_size: whole_img
+
+# datasets:
+#   name: outdoor
+#   train:
+#     mode: OTSdataset
+#     # mode: Pairloader
+#     dataroot_GT: ./data/RESIDE-OUT/outdoor/train/GT
+#     dataroot_hazy: ./data/RESIDE-OUT/outdoor/train/hazy
+#     use_shuffle: true
+#     n_workers: 12
+#     batch_size: 12
+#     patch_size: [256, 256]
+#     use_flip: true
+#     use_rot: true
+#     color: RGB
+
+#   valid:
+#     # mode: Pairloader
+#     mode: SOTSdataset
+#     dataroot_GT: ./data/SOTS/outdoor/clear
+#     dataroot_hazy: ./data/SOTS/outdoor/hazy1
+#     use_shuffle: false
+#     n_workers: 4
+#     batch_size: 1
+#     patch_size: whole_img

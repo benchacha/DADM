@@ -1,0 +1,86 @@
+phase: test
+gpu_ids: [1]
+
+
+model: DADM
+seed:
+
+sde:
+  max_sigma: 50
+  T: 100
+  schedule: cosine
+  eps: 0.005
+
+
+degradation: # for some synthetic dataset that only have GTs
+  # for denoising
+  sigma: 25
+  noise_type: G # Gaussian noise: G
+  # for super-resolution
+  scale: 4
+
+
+net_G:
+  name: DADNet
+  in_nc: 3
+  out_nc: 3
+  embed_dims: [24, 48, 96, 48, 24]
+  depths: [2, 2, 24, 2, 2]
+  upsacle: 1.0
+
+path:
+  checkpoint: ~
+
+  strict_load: true
+  resume_state: ~
+  ckpts: state
+  save_path: ./results
+
+
+# datasets:
+#   name: indoor
+#   valid:
+#     type: indoor
+#     mode: ValidDataset
+#     dataroot_GT: ./data/SOTS/indoor/clear
+#     dataroot_hazy: ./data/SOTS/indoor/hazy
+#     use_shuffle: false
+#     n_workers: 8
+#     batch_size: 1
+#     patch_size: whole_img
+
+# datasets:
+#   name: outdoor
+#   valid:
+#     type: outdoor
+#     mode: ValidDataset
+#     dataroot_GT: ./data/SOTS/outdoor/clear
+#     dataroot_hazy: ./data/SOTS/outdoor/hazy
+#     use_shuffle: false
+#     n_workers: 8
+#     batch_size: 1
+#     patch_size: whole_img
+
+# datasets:
+#   name: NH_Haze
+#   valid:
+#     mode: ValidDataset
+#     type: NH_Haze
+#     dataroot_GT: ./data/NH_HAZE/train/GT
+#     dataroot_hazy: ./data/NH_HAZE/train/hazy
+#     use_shuffle: false
+#     n_workers: 8
+#     batch_size: 1
+#     patch_size: whole_img
+
+datasets:
+  name: NH2_Haze
+  valid:
+    mode: ValidDataset
+    type: NH-Haze2
+    dataroot_GT: ./data/NH_HAZE2/train/GT
+    dataroot_hazy: ./data/NH_HAZE2/train/hazy
+    use_shuffle: false
+    n_workers: 8
+    batch_size: 1
+    patch_size: whole_img
