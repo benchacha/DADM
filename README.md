@@ -17,11 +17,11 @@ Density-Aware Diffusion Model for Efficient Image Dehazing
 
 ### Analysis of the test sampling process on four datasets.
 
-![Analysis of the test sampling process on four datasets.](.figs/analysis_x0.png)
+![Analysis of the test sampling process on four datasets.](./figs/analysis_x0.png)
 
 ### Statistics on Datasets 
 
-![Statistics on](.figs/count.png)
+![Statistics on](./figs/count.png)
 
 ### Sampling process for testing.
 
@@ -29,7 +29,7 @@ Density-Aware Diffusion Model for Efficient Image Dehazing
 
 ### Analysis of xt on four datasets.
 
-![Analysis of xt on four datasets](.figs/analysis_xt.png)
+![Analysis of xt on four datasets](./figs/analysis_xt.png)
 
 ### Visual Comparison with IR-SDE.
 
