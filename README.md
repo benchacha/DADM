@@ -217,3 +217,13 @@ user                           Sun Aug  4 19:40:30 2024  550.54.14
 [3] NVIDIA GeForce RTX 2080 Ti | 46°C,  12 % |  6832 / 11264 MB | chengliang(6824M) gdm(4M)
 [4] NVIDIA GeForce RTX 3090    | 58°C,   0 % | 22999 / 24576 MB | baichang(22982M) gdm(4M)
 [5] NVIDIA GeForce RTX 3090    | 40°C,   0 % | 23641 / 24576 MB | baichang(23624M) gdm(4M)
+
+Python 3.7.1
+
+(pytorch) baiwenxu@user:~/DADM$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 20.04.6 LTS
+Release:        20.04
+Codename:       focal
+
