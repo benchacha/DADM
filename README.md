@@ -49,3 +49,30 @@
 > We compared our methods with IR-SDE.
 
 ![Visual Comparison with IR-SDE](./figs/IRSDE.png)
+
+# Dependenices Version
+
+* OS:                      Ubuntu 20.04.6
+* nvdia:                   11.6
+* python:                  3.7.1
+* pytorch:                 1.13.0
+
+# How to train?
+
+### datasets preparation and parameters configuration
+> You can directly configure the hazy and GT paths of the dataset and other parameters in the corresponding files under the Option folder. 
+> We have configured four different types of processing methods for different types of data sets hazy image and gt image formats.
+* indoor
+* outdoor
+* NH_Haze
+* NH-Haze2
+
+### train
+```bash
+bash train.sh
+```
+
+### test
+```bash
+bash test.sh
+```
