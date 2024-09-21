@@ -28,7 +28,7 @@
 
 ### 5. Statistics on Datasets.
 
-> we evaluate all the sampling results at various time steps using the PSNR values against the ground truth. Based on the mean value $t_2$ and the variance $\sigma$ of the distribution, we can plot the corresponding normal distribution curves $c \sim \mathcal{N}(t_2, \sigma^2)$. Next, we set a criterion that the area under the corresponding normal distribution curve from $t_1$ to $t=0$ is 90\% of the total area.
+> We evaluate all the sampling results at various time steps using the PSNR values against the ground truth. Based on the mean value $t_2$ and the variance $\sigma$ of the distribution, we can plot the corresponding normal distribution curves $c \sim \mathcal{N}(t_2, \sigma^2)$. Next, we set a criterion that the area under the corresponding normal distribution curve from $t_1$ to $t=0$ is 90\% of the total area.
 
 ![Statistics on](./figs/count.png)
 
